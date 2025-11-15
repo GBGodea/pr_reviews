@@ -1,0 +1,42 @@
+run:
+  timeout: 5m
+  go: '1.25'
+  issues-exit-code: 1
+  tests: true
+  skip-dirs:
+    - vendor
+    - .git
+
+linters:
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
+    - vet
+    - fmt
+    - goimports
+    - misspell
+    - revive
+    - unconvert
+    - whitespace
+    - gosec
+    - nolintlint
+    - errorlint
+
+  disable-all: false
+
+issues:
+  exclude:
+    - "should not use ALL_CAPS in Go names"
+  exclude-rules:
+    - path: "_test\\.go"
+      linters:
+        - gosec
+        - errorlint
+
+severity:
+  default-severity: error
